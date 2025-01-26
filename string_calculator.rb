@@ -12,3 +12,4 @@ calc = StringCalculator.new
 puts calc.add("")     # Output: 0
 puts calc.add("1")    # Output: 1
 puts calc.add("1,2")  # Output: 3
+puts calc.add("1,2,3,4")   # Output: 10
