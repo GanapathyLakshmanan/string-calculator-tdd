@@ -10,7 +10,12 @@ class StringCalculator
 		end
     
 	    numbers = numbers.gsub("\n", delimiter)
-		numbers.split(delimiter).map(&:to_i).sum
+		nums = numbers.split(delimiter).map(&:to_i)
+		
+		negatives = nums.select { |n| n < 0 }
+		raise "negative numbers not allowed: #{negatives.join(',')}" if negatives.any?
+		
+		nums.sum
 	end
 end
 
@@ -22,3 +27,8 @@ puts calc.add("1,2")  # Output: 3
 puts calc.add("1,2,3,4")   # Output: 10
 puts calc.add("1\n2,3")    # Output: 6
 puts calc.add("//;\n1;2")  # Output: 3
+begin
+  puts calc.add("1,-2,3")  # Raises: negative numbers not allowed: -2
+rescue => e
+  puts e.message
+end
