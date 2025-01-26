@@ -28,7 +28,7 @@ puts calc.add("1,2,3,4")   # Output: 10
 puts calc.add("1\n2,3")    # Output: 6
 puts calc.add("//;\n1;2")  # Output: 3
 begin
-  puts calc.add("1,-2,3")  # Raises: negative numbers not allowed: -2
+  puts calc.add("1,-2,-3")  # Raises: negative numbers not allowed: -2,-3
 rescue => e
   puts e.message
 end
